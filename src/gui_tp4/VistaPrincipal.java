@@ -36,11 +36,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
         dtpEscritorio.setLayout(dtpEscritorioLayout);
         dtpEscritorioLayout.setHorizontalGroup(
             dtpEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 629, Short.MAX_VALUE)
         );
         dtpEscritorioLayout.setVerticalGroup(
             dtpEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
+            .addGap(0, 508, Short.MAX_VALUE)
         );
 
         mnuAlumno.setText("Alumno");
@@ -62,11 +62,13 @@ public class VistaPrincipal extends javax.swing.JFrame {
         mnuRegistro.setText("Registro");
 
         mniFormularioInscripcion.setText("Formulario de inscripción");
+        mniFormularioInscripcion.addActionListener(this::mniFormularioInscripcionActionPerformed);
         mnuRegistro.add(mniFormularioInscripcion);
 
         mnbPrincipal.add(mnuRegistro);
 
         mnuSalir.setText("Salir");
+        mnuSalir.addActionListener(this::mnuSalirActionPerformed);
         mnbPrincipal.add(mnuSalir);
 
         setJMenuBar(mnbPrincipal);
@@ -75,11 +77,15 @@ public class VistaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(dtpEscritorio)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(dtpEscritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(dtpEscritorio)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(dtpEscritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -87,14 +93,27 @@ public class VistaPrincipal extends javax.swing.JFrame {
 
     private void mniAgregarAlumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAgregarAlumnoActionPerformed
         
-        
-        
+        VistaAlumnos va = new VistaAlumnos();
+        dtpEscritorio.add(va);
+        va.setVisible(true);
         
     }//GEN-LAST:event_mniAgregarAlumnoActionPerformed
 
     private void mniAgregarMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAgregarMateriaActionPerformed
-        // TODO add your handling code here:
+        VistaMaterias vm = new VistaMaterias();
+        dtpEscritorio.add(vm);
+        vm.setVisible(true);
     }//GEN-LAST:event_mniAgregarMateriaActionPerformed
+
+    private void mniFormularioInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniFormularioInscripcionActionPerformed
+        VistaInscripcion vi = new VistaInscripcion();
+        dtpEscritorio.add(vi);
+        vi.setVisible(true);
+    }//GEN-LAST:event_mniFormularioInscripcionActionPerformed
+
+    private void mnuSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuSalirActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_mnuSalirActionPerformed
 
     
     public static void main(String args[]) {
