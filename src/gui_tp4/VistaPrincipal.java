@@ -112,7 +112,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_mniFormularioInscripcionActionPerformed
 
     private void mnuSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuSalirActionPerformed
-        
+        this.dispose();
     }//GEN-LAST:event_mnuSalirActionPerformed
 
     
