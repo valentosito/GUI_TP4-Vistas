@@ -54,6 +54,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         mnuMateria.setText("Materia");
 
         mniAgregarMateria.setText("Agregar materia");
+        mniAgregarMateria.addActionListener(this::mniAgregarMateriaActionPerformed);
         mnuMateria.add(mniAgregarMateria);
 
         mnbPrincipal.add(mnuMateria);
@@ -90,6 +91,10 @@ public class VistaPrincipal extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_mniAgregarAlumnoActionPerformed
+
+    private void mniAgregarMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mniAgregarMateriaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mniAgregarMateriaActionPerformed
 
     
     public static void main(String args[]) {
