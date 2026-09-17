@@ -1,15 +1,17 @@
 
 package gui_tp4;
 
+import java.util.HashSet;
 import javax.swing.ImageIcon;
+import logica.Materia;
 
 public class VistaMaterias extends javax.swing.JInternalFrame {
+    private HashSet<Materia> materias;
 
-   
-    public VistaMaterias() {
+    public VistaMaterias( HashSet<Materia> materias) {
         initComponents();
+        this.materias=materias;
         setFrameIcon(new ImageIcon(getClass().getResource("/gui_tp4/logoULP.png")));
-
     }
 
    
@@ -83,10 +85,10 @@ public class VistaMaterias extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel4))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtAnioMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txtCodigoMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtNombreMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 50, Short.MAX_VALUE))
+                                    .addComponent(txtNombreMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtAnioMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 227, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnGuardar)
@@ -138,15 +140,37 @@ public class VistaMaterias extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtCodigoMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoMateriaActionPerformed
-        // TODO add your handling code here:
+      
     }//GEN-LAST:event_txtCodigoMateriaActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        // TODO add your handling code here:
+         if (txtCodigoMateria.getText().isEmpty()
+            || txtNombreMateria.getText().isEmpty()
+            || txtAnioMateria.getText().isEmpty()) {
+
+        javax.swing.JOptionPane.showMessageDialog(this,
+                "Complete todos los campos.");
+        return;
+    }
+
+    int codigo = Integer.parseInt(txtCodigoMateria.getText());
+    String nombre = txtNombreMateria.getText();
+    int anio = Integer.parseInt(txtAnioMateria.getText());
+
+    Materia materia = new Materia(codigo, nombre, anio);
+    materias.add(materia);
+
+    javax.swing.JOptionPane.showMessageDialog(this,
+            "Materia guardada correctamente.");
+
+    txtCodigoMateria.setText("");
+    txtNombreMateria.setText("");
+    txtAnioMateria.setText("");
+
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        // TODO add your handling code here:
+dispose ();        
     }//GEN-LAST:event_btnSalirActionPerformed
 
 

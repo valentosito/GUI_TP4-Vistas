@@ -1,17 +1,42 @@
 
 package gui_tp4;
 
+import java.util.HashSet;
 import javax.swing.ImageIcon;
+import logica.Alumno;
+import logica.Materia;
 
 
 public class VistaInscripcion extends javax.swing.JInternalFrame {
+    private HashSet<Alumno> alumnos;
+    private HashSet<Materia> materias;
 
    
-    public VistaInscripcion() {
+    public VistaInscripcion(HashSet<Alumno>alumnos, HashSet<Materia>materias) {
         initComponents();
+        this.alumnos = alumnos;
+        this.materias= materias;
         setFrameIcon(new ImageIcon(getClass().getResource("/gui_tp4/logoULP.png")));
+        
+        
+    cargarComboBox();
+    }
+    
+private void cargarComboBox() {
+    cmbAlumnos.removeAllItems();
+    cmbMaterias.removeAllItems();
+
+    cmbAlumnos.addItem("Seleccionar...");
+    cmbMaterias.addItem("Seleccionar...");
+
+    for (Alumno alumno : alumnos) {
+        cmbAlumnos.addItem(alumno.toString());
     }
 
+    for (Materia materia : materias) {
+        cmbMaterias.addItem(materia.toString());
+    }
+}
    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -70,7 +95,7 @@ public class VistaInscripcion extends javax.swing.JInternalFrame {
                     .addComponent(cmbAlumnos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
+                .addContainerGap(244, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -116,7 +141,48 @@ public class VistaInscripcion extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnInscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInscribirActionPerformed
-        // TODO add your handling code here:
+      
+
+    if (cmbAlumnos.getSelectedIndex() == 0
+            || cmbMaterias.getSelectedIndex() == 0) {
+
+        javax.swing.JOptionPane.showMessageDialog(this,
+                "Seleccione un alumno y una materia.");
+        return;
+    }
+
+    Alumno alumnoSeleccionado = null;
+    Materia materiaSeleccionada = null;
+
+    int indiceAlumno = cmbAlumnos.getSelectedIndex() - 1;
+    int indiceMateria = cmbMaterias.getSelectedIndex() - 1;
+
+    int contador = 0;
+    for (Alumno alumno : alumnos) {
+        if (contador == indiceAlumno) {
+            alumnoSeleccionado = alumno;
+            break;
+        }
+        contador++;
+    }
+
+    contador = 0;
+    for (Materia materia : materias) {
+        if (contador == indiceMateria) {
+            materiaSeleccionada = materia;
+            break;
+        }
+        contador++;
+    }
+
+    if (alumnoSeleccionado.agregarMateria(materiaSeleccionada)) {
+        javax.swing.JOptionPane.showMessageDialog(this,
+                "Alumno inscripto correctamente.");
+    } else {
+        javax.swing.JOptionPane.showMessageDialog(this,
+                "El alumno ya está inscripto en esa materia.");
+    }
+
     }//GEN-LAST:event_btnInscribirActionPerformed
 
     private void cmbMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMateriasActionPerformed
@@ -124,7 +190,7 @@ public class VistaInscripcion extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_cmbMateriasActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        // TODO add your handling code here:
+        dispose ();
     }//GEN-LAST:event_btnSalirActionPerformed
 
 
