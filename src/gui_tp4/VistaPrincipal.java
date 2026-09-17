@@ -61,11 +61,11 @@ public class VistaPrincipal extends javax.swing.JFrame {
         dtpEscritorio.setLayout(dtpEscritorioLayout);
         dtpEscritorioLayout.setHorizontalGroup(
             dtpEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 448, Short.MAX_VALUE)
+            .addGap(0, 673, Short.MAX_VALUE)
         );
         dtpEscritorioLayout.setVerticalGroup(
             dtpEscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 230, Short.MAX_VALUE)
+            .addGap(0, 464, Short.MAX_VALUE)
         );
 
         mnuAlumno.setText("Alumno");
@@ -102,9 +102,7 @@ public class VistaPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 47, Short.MAX_VALUE)
-                .addComponent(dtpEscritorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(dtpEscritorio, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();

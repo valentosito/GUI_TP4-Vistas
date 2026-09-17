@@ -144,7 +144,8 @@ public class VistaMaterias extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtCodigoMateriaActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-         if (txtCodigoMateria.getText().isEmpty()
+         
+        if (txtCodigoMateria.getText().isEmpty()
             || txtNombreMateria.getText().isEmpty()
             || txtAnioMateria.getText().isEmpty()) {
 
@@ -152,11 +153,23 @@ public class VistaMaterias extends javax.swing.JInternalFrame {
                 "Complete todos los campos.");
         return;
     }
+        
+    
+    int codigo;  
+    int anio; 
+    
+     try {
+        codigo = Integer.parseInt(txtCodigoMateria.getText());
+        anio = Integer.parseInt(txtAnioMateria.getText());
+    } catch (NumberFormatException e) {
 
-    int codigo = Integer.parseInt(txtCodigoMateria.getText());
-    String nombre = txtNombreMateria.getText();
-    int anio = Integer.parseInt(txtAnioMateria.getText());
+        javax.swing.JOptionPane.showMessageDialog(this,
+                "El código y el año deben contener solo números.");
+        return;
+    }
 
+    String nombre = txtNombreMateria.getText();  
+     
     Materia materia = new Materia(codigo, nombre, anio);
     materias.add(materia);
 

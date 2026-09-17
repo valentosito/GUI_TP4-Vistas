@@ -141,7 +141,9 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-         if (txtLegajo.getText().isEmpty()
+         
+        
+            if (txtLegajo.getText().isEmpty()
             || txtApellido.getText().isEmpty()
             || txtNombre.getText().isEmpty()) {
 
@@ -150,7 +152,18 @@ public class VistaAlumnos extends javax.swing.JInternalFrame {
         return;
     }
 
-    int legajo = Integer.parseInt(txtLegajo.getText());
+    int legajo;
+    
+    try {
+        legajo = Integer.parseInt(txtLegajo.getText());
+    } catch (NumberFormatException e) {
+
+        javax.swing.JOptionPane.showMessageDialog(this,
+                "El legajo debe contener solo números.");
+        return;
+    }
+    
+    
     String apellido = txtApellido.getText();
     String nombre = txtNombre.getText();
 

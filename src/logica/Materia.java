@@ -2,7 +2,7 @@
 package logica;
 
 
-public class Materia {
+public class Materia implements Comparable <Materia>{
     protected int idMateria;
     protected String nombre;
     protected int anio;
@@ -40,7 +40,7 @@ public class Materia {
     @Override
     public String toString() {
         
-        return ("ID Materia: "+ idMateria+ " Materia: " + nombre + " Año: " + anio);
+        return (nombre + " - Año: " + anio);
     }
 
     @Override
@@ -65,9 +65,19 @@ public class Materia {
         return this.idMateria == other.idMateria;
     }
 
-    
-    
-    
-    
+    @Override
+    public int compareTo(Materia m) {
+               
+        int comparacionNombre = this.nombre.compareToIgnoreCase(m.nombre);
+
+        // si los nombres de las materias no son iguales, compara y devuelve orden basado en abc.
+        if (comparacionNombre != 0) {  
+            return comparacionNombre;
+        }
+        // sino, compara teniendo en cuenta el año:
+        
+        return Integer.compare(this.anio, m.anio);
+        
+    }
     
 }
