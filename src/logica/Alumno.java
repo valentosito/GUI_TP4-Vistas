@@ -44,8 +44,9 @@ public class Alumno {
     }
     
     
-    public void agregarMateria( Materia m){  // agrego las materias al hashset a traves de este método
-        materias.add(m);
+    public boolean agregarMateria( Materia m){  // agrego las materias al hashset a traves de este método
+        return materias.add (m);
+        
     }
     
     public int cantidadMaterias(){

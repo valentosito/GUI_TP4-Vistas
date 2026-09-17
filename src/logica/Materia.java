@@ -1,10 +1,7 @@
 
 package logica;
 
-/**
- *
- * @author usuario
- */
+
 public class Materia {
     protected int idMateria;
     protected String nombre;
@@ -67,6 +64,7 @@ public class Materia {
         final Materia other = (Materia) obj;
         return this.idMateria == other.idMateria;
     }
+
     
     
     
